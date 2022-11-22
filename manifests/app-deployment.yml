@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app-diplom-deployment
+  labels:
+    app: nginx-app-diplom
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-app-diplom
+  template:
+    metadata:
+      labels:
+        app: nginx-app-diplom
+    spec:
+      containers:
+      - name: nginx-app-diplom
+        image: weiruk/nginx-app-diplom:latest
+        ports:
+        - containerPort: 80
+          name: http
